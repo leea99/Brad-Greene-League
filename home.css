@@ -29,6 +29,20 @@ html
     text-decoration: none;
   }
 
+  .sticky
+  {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    float: left;
+  }
+
+  .active
+  {
+    background-color: #006600;
+  }
+
   .champ
   {
     display: block;
@@ -79,7 +93,7 @@ html
 
   tr
   {
-    height: 62.5px;
+    height: 62px;
   }
 
   .test
@@ -113,8 +127,8 @@ html
 
     .test
     {
-      padding-top: 20px;
-      padding-bottom: 21px;
+      height: 62px;
+      line-height: 62px;
     }
 
   }

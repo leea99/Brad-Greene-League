@@ -79,32 +79,47 @@ request.onload = function()
 
 request.send()
   
-  function generateTableHead(table, data) {
-    let thead = table.createTHead();
-    let row = thead.insertRow();
-    let first = true
-    for (let key of data) {
-      let th = document.createElement("th");
-      let text = document.createTextNode(key);
-      if (first == true)
-      {
-        th.className = 'test'
-        first = false
-      }
+function generateTableHead(table, data) {
+  let thead = table.createTHead();
+  let row = thead.insertRow();
+  let first = true
+  for (let key of data) {
+    let th = document.createElement("th");
+    let text = document.createTextNode(key);
+    if (first == true)
+    {
+      th.className = 'test'
+      first = false
+    }
 
-      th.appendChild(text);
-      row.appendChild(th);
+    th.appendChild(text);
+    row.appendChild(th);
+  }
+}
+
+function generateTable(table, data) {
+  for (let element of data) {
+    let row = table.insertRow();
+    for (key in element) {
+      let cell = row.insertCell();
+      let text = document.createTextNode(element[key]);
+      cell.appendChild(text);
     }
   }
-  
-  function generateTable(table, data) {
-    for (let element of data) {
-      let row = table.insertRow();
-      for (key in element) {
-        let cell = row.insertCell();
-        let text = document.createTextNode(element[key]);
-        cell.appendChild(text);
-      }
-    }
+}
+
+window.onscroll = function() {myFunction()};
+
+var navbar = document.getElementById("navbar");
+var sticky = navbar.offsetTop;
+
+function myFunction() {
+  if (window.pageYOffset >= sticky) {
+    navbar.classList.add("sticky")
+    console.log('add')
+  } else {
+    navbar.classList.remove("sticky");
+    console.log('remove')
   }
+}
   
