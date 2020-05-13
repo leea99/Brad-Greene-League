@@ -91,7 +91,6 @@ function generateTableHead(table, data) {
       th.className = 'test'
       first = false
     }
-
     th.appendChild(text);
     row.appendChild(th);
   }
@@ -100,7 +99,8 @@ function generateTableHead(table, data) {
 function generateTable(table, data) {
   for (let element of data) {
     let row = table.insertRow();
-    for (key in element) {
+    for (key in element) 
+    {
       let cell = row.insertCell();
       let text = document.createTextNode(element[key]);
       cell.appendChild(text);

@@ -91,6 +91,11 @@ html
     color: white;
   }
 
+  thead tr:nth-child(3)
+  {
+    background-color: lightgray;
+  }
+
   tr
   {
     height: 62px;
