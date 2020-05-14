@@ -4,7 +4,12 @@ html
     background-color: #dcdddf;
     height: 1000px;
   }
-  
+
+#brad
+{
+  padding-left: 46%;
+}
+
   ul
   {
     list-style-type: none;
@@ -135,7 +140,11 @@ html
       height: 62px;
       line-height: 62px;
     }
-
+    
+    #brad
+    {
+      padding-left: 40%;
+    }
   }
   
   @media only screen and (min-width: 600px) {
