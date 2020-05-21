@@ -1,4 +1,5 @@
 var request = new XMLHttpRequest()
+var teams = new Array()
 var teams1 = new Array()
 var teams2 = new Array()
 
@@ -14,18 +15,22 @@ request.onload = function()
     {
         let team = data['teams'][i]['location'] + " " + data['teams'][i]['nickname']
         let logo = data['teams'][i]['logo']
-        if (i % 2 == 0)
+        teams.push({Logo:logo, Team:team})
+        i++
+    }
+    teams.sort((a,b) => (a.Team > b.Team) ? 1 : -1)
+    
+    for (i = 0; i < teams.length; i++)
+    {
+        if (i < 6)
         {
-            teams1.push({Logo:logo, Team:team})
+            teams1.push(teams[i])
         }
         else
         {
-            teams2.push({Logo:logo, Team:team})
+            teams2.push(teams[i])
         }
-        i++
     }
-    teams1.sort((a,b) => (a.Team > b.Team) ? 1 : -1)
-    teams2.sort((a,b) => (a.Team > b.Team) ? 1 : -1)
   }
   else
   {
@@ -57,10 +62,23 @@ function generateRows(table, data)
             }
             else
             {
+                cell.className = 'teamName' 
                 let text = document.createTextNode(element[key]);
                 cell.appendChild(text);
             }
             i++
         }
+        let cell = row.insertCell()
+        cell.className = 'link'   
+        var link = document.createElement('a')
+        let text = document.createTextNode('Roster')
+        link.appendChild(text)
+        cell.appendChild(link)
+        cell = row.insertCell()
+        cell.className = 'link'   
+        link = document.createElement('a')
+        text = document.createTextNode('Schedule')
+        link.appendChild(text)
+        cell.appendChild(link)
     }
 }

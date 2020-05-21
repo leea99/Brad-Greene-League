@@ -2,7 +2,6 @@ html
   {
     font-family: Tahoma, Geneva, sans-serif;
     background-color: #edeef0;
-    height: 1000px;
   }
 
 #brad
@@ -79,7 +78,7 @@ li a
 
 .logo
 {
-    width: 65px;
+  width: 60px;
 }
 
 .logo img
@@ -88,7 +87,18 @@ li a
     width: 55px;
 }
 
-@media only screen and (max-width: 600px) 
+.teamName
+{
+  width: 60%;
+}
+
+.link
+{
+  width: 15%;
+  padding: 15px;
+}
+
+@media only screen and (max-width: 1000px) 
 {
   [class*="s"] {
     float: left;
@@ -98,5 +108,6 @@ li a
   .teamTable
   {
     margin-left: 0;
+    width: 100%;
   }
 }
