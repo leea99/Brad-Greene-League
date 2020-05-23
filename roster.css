@@ -43,6 +43,11 @@ li a
   float: left;
 }
 
+.active
+{
+  background-color: #006600;
+}
+
 #teamInfo
 {
   width: 90%;
@@ -57,15 +62,17 @@ li a
 {
   width: 100px;
   height: 100%;
-  background-color: red;
   float: left;
 }
 
 #teamName
 {
   width: 400px;
-  height: 100%;
-  background-color: blue;
+  height: 100px;
+  vertical-align: center;
+  padding-top: 25px;
+  text-align: center;
+  font-size: 2em;
 }
 
 #roster
@@ -81,6 +88,7 @@ table
 {
   text-align: center;
   background-color: white;
+  border: thick #333 solid;
 }
 
 thead
@@ -94,11 +102,6 @@ tr
   height: 35px;
 }
 
-td
-{
-  border: thick #333 solid;
-}
-
 tr td:nth-child(1)
 {
   width: 50%;
@@ -107,9 +110,27 @@ tr td:nth-child(1)
 tr td:nth-child(2)
 {
   width: 10%;
+  border-left: thick #333 solid;
+  border-right: thick #333 solid;
 }
 
 tr td:nth-child(3)
 {
   width: 40%;
+}
+
+.odd
+{
+  background-color: lightgray;
+}
+
+#starters
+{
+  border-bottom: thick #333 solid;
+}
+
+#image img
+{
+  width: 100px;
+  height: 100px;
 }

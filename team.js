@@ -11,15 +11,20 @@ request.onload = function()
 
   if (request.status >= 200 && request.status < 400)
   {
+    //Gets the necessary data from ESPN
     for (id in data['teams'])
     {
         let team = data['teams'][i]['location'] + " " + data['teams'][i]['nickname']
         let logo = data['teams'][i]['logo']
-        teams.push({Logo:logo, Team:team})
+        let id = data['teams'][i]['id']
+        teams.push({Logo:logo, Team:team, Id:id})
         i++
     }
+    //Sorts teams alphabetically
     teams.sort((a,b) => (a.Team > b.Team) ? 1 : -1)
     
+    //Used for small screen devices, puts half of the teams
+    //in one table, the rest in another.
     for (i = 0; i < teams.length; i++)
     {
         if (i < 6)
@@ -44,35 +49,44 @@ request.onload = function()
 
 request.send()
 
+//Generates the table for the website
 function generateRows(table, data)
 {
     for (let element of data)
     {
         let row = table.insertRow()
         let i = 0
+        //Inserts the logo and team name into the table
         for (key in element) 
         {
-            let cell = row.insertCell();
-            if (i % 2 == 0)
+            if (key != 'Id')
             {
-                cell.className = 'logo'   
-                var img = document.createElement('img')
-                img.src = element[key]
-                cell.appendChild(img)
-            }
-            else
-            {
-                cell.className = 'teamName' 
-                let text = document.createTextNode(element[key]);
-                cell.appendChild(text);
+                let cell = row.insertCell();
+                if (i % 2 == 0)
+                {
+                    cell.className = 'logo'   
+                    var img = document.createElement('img')
+                    img.src = element[key]
+                    cell.appendChild(img)
+                }
+                else
+                {
+                    cell.className = 'teamName' 
+                    let text = document.createTextNode(element[key])
+                    cell.appendChild(text);
+                }
             }
             i++
         }
+        //Inserts roster links and schedule links
         let cell = row.insertCell()
         cell.className = 'link'   
         var link = document.createElement('a')
-        let text = document.createTextNode('Roster')
+        var text = document.createTextNode('Roster')
         link.appendChild(text)
+        //Sets the appropriate page links here
+        if (element[key] == 1)
+            link.setAttribute('href', 'team1roster.html')
         cell.appendChild(link)
         cell = row.insertCell()
         cell.className = 'link'   
