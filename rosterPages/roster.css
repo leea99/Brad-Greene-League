@@ -48,109 +48,98 @@ li a
   background-color: #006600;
 }
 
-.champ
-{
-  display: block;
-  width: 90%;
-  margin-left: 5%;
-  margin-top: 10px;
-}
-
-.champ img
-{
-  height: auto;
-  width: 100%;
-}
-
-.standings
+#teamInfo
 {
   width: 90%;
-  height: 500px;
+  height: 100px;
   margin-left: 5%;
   margin-top: 10px;
   margin-bottom: 10px;
   border-collapse: collapse;
 }
 
-.division
+#image
 {
-  width: 40%;
-  height: 250px;
+  width: 100px;
+  height: 100%;
+  float: left;
+}
+
+#teamName
+{
+  width: 400px;
+  height: 100px;
+  vertical-align: center;
+  padding-top: 25px;
   text-align: center;
+  font-size: 2em;
+}
+
+#roster
+{
+  width: 90%;
+  margin-left: 5%;
+  margin-top: 10px;
+  margin-bottom: 10px;
   border-collapse: collapse;
 }
 
-.division table
+table
 {
-  width: 100%;
   text-align: center;
-  border-collapse: collapse;
-  border: thick #333 solid;
   background-color: white;
+  border: thick #333 solid;
 }
 
-th
+thead
 {
   background-color: #333;
   color: white;
 }
 
-thead tr:nth-child(3)
-{
-  background-color: lightgray;
-}
-
 tr
 {
-  height: 62px;
+  height: 35px;
 }
 
-.test
+tr td:nth-child(1)
 {
   width: 50%;
 }
 
+tr td:nth-child(2)
+{
+  width: 10%;
+  border-left: thick #333 solid;
+  border-right: thick #333 solid;
+}
+
+tr td:nth-child(3)
+{
+  width: 40%;
+}
+
+.odd
+{
+  background-color: lightgray;
+}
+
+#starters
+{
+  border-bottom: thick #333 solid;
+}
+
+#image img
+{
+  width: 100px;
+  height: 100px;
+}
+
 @media only screen and (max-width: 600px) 
 {
-  [class*="s"] {
-    float: left;
-    width: 100%;
-    border: none;
-  }
-
-  .champ 
+  #roster
   {
     width: 100%;
     margin-left: 0;
   }
-
-  .standings
-  {
-    margin-left: 0;
-  }
-
-  th
-  {
-    background-color: #333;
-    color: white;
-  }
-
-  .test
-  {
-    height: 62px;
-    line-height: 62px;
-  }
-  
-  #brad
-  {
-    padding-left: 40%;
-  }
-}
-
-@media only screen and (min-width: 600px) {
-
-}
-
-@media only screen and (min-width: 768px) {
-
 }
