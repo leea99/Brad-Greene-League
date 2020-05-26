@@ -142,4 +142,23 @@ tr td:nth-child(3)
     width: 100%;
     margin-left: 0;
   }
+
+  #teamInfo
+  {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  #teamName
+  {
+    width: 100%;
+    text-align: left;
+    padding-left: 105px;
+    font-size: 1.4em;
+  }
+
+  #brad
+  {
+    padding-left: 40%;
+  }
 }
