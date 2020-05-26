@@ -1,0 +1,164 @@
+html
+  {
+    font-family: Tahoma, Geneva, sans-serif;
+    background-color: #edeef0;;
+    height: 1000px;
+  }
+
+#brad
+{
+  padding-left: 46%;
+}
+
+ul
+{
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+li
+{
+  float: left;
+  width: 25%;
+}
+
+li a
+{
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.sticky
+{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  float: left;
+}
+
+.active
+{
+  background-color: #006600;
+}
+
+#teamInfo
+{
+  width: 90%;
+  height: 100px;
+  margin-left: 5%;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border-collapse: collapse;
+}
+
+#image
+{
+  width: 100px;
+  height: 100%;
+  float: left;
+}
+
+#teamName
+{
+  width: 400px;
+  height: 100px;
+  vertical-align: center;
+  padding-top: 25px;
+  text-align: center;
+  font-size: 2em;
+}
+
+#roster
+{
+  width: 90%;
+  margin-left: 5%;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border-collapse: collapse;
+}
+
+table
+{
+  text-align: center;
+  background-color: white;
+  border: thick #333 solid;
+}
+
+thead
+{
+  background-color: #333;
+  color: white;
+}
+
+tr
+{
+  height: 35px;
+}
+
+tr td:nth-child(1)
+{
+  width: 50%;
+}
+
+tr td:nth-child(2)
+{
+  width: 10%;
+  border-left: thick #333 solid;
+  border-right: thick #333 solid;
+}
+
+tr td:nth-child(3)
+{
+  width: 40%;
+}
+
+.odd
+{
+  background-color: lightgray;
+}
+
+#starters
+{
+  border-bottom: thick #333 solid;
+}
+
+#image img
+{
+  width: 100px;
+  height: 100px;
+}
+
+@media only screen and (max-width: 600px) 
+{
+  #roster
+  {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  #teamInfo
+  {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  #teamName
+  {
+    width: 100%;
+    text-align: left;
+    padding-left: 105px;
+    font-size: 1.4em;
+  }
+
+  #brad
+  {
+    padding-left: 40%;
+  }
+}
