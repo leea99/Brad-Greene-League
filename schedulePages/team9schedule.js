@@ -13,7 +13,7 @@ var users = [{id: 1, name:"Avery"}, //Used to convert user IDS to readable names
             {id: 11, name:"Cedric"},
             {id: 12, name:"Christian"}]
 
-request.open('GET', 'http://fantasy.espn.com/apis/v3/games/ffl/seasons/2020/segments/0/leagues/1001965?view=mBoxscore', true)
+request.open('GET', 'https://fantasy.espn.com/apis/v3/games/ffl/seasons/2020/segments/0/leagues/1001965?view=mBoxscore', true)
 request.onload = function()
 {
     data = JSON.parse(this.response)
