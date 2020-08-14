@@ -1,0 +1,155 @@
+html
+  {
+    font-family: Tahoma, Geneva, sans-serif;
+    background-color: #edeef0;
+  }
+
+#brad
+{
+  padding-left: 46%;
+}
+
+ul
+{
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+li
+{
+  float: left;
+  width: 25%;
+}
+
+li a
+{
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.sticky
+{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  float: left;
+}
+
+.active
+{
+  background-color: #006600;
+}
+
+#content
+{
+    width: 90%;
+    margin-left: 5%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-collapse: collapse;
+}
+
+h1
+{
+    text-align: center;
+}
+
+#scoreTable
+{
+    margin-top: 10px;
+    width: 100%;
+    background-color: white;
+    border-collapse: collapse;
+}
+
+.scoreRows
+{
+    border: thick solid #333;
+}
+
+.scoreRows table
+{
+    width: 50%;
+    height: 80px;
+}
+
+.scoreRows table:nth-child(odd)
+{
+    float: left;
+    border-right: thick solid #333;
+}
+
+.logo 
+{
+    width: 10%;
+}
+
+.logo img
+{
+    width: 55px;
+    height: 55px;
+}
+
+.scoreRows table tr td:nth-child(3)
+{
+    width: 5%;
+    text-align: center;
+}
+
+.scoreRows table tr td:nth-child(4)
+{
+    width: 15%;
+    text-align: center;
+    border-left: thin solid #333;
+}
+
+button
+{
+    background-color: #006600;
+    color: white;
+    border-color: #333;
+    border-radius: 4px;
+}
+
+@media only screen and (max-width: 600px) 
+{ 
+    #content
+    {
+        margin-left: 0;
+        width: 100%;
+    }
+
+    #brad
+    {
+        padding-left: 40%;
+    }
+
+    td
+    {
+        font-size: .6em;
+    }
+
+    .logo img
+    {
+        width: 40px;
+        height: 40px;
+    }
+
+    .scoreRows table tr td:nth-child(4)
+    {
+        border: none;
+    }
+
+    button
+    {
+        width: 95%;
+        font-size: .8em;
+    }
+}
