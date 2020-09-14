@@ -10,10 +10,10 @@ var users = [{id: 1, name:"Avery"}, //Used to convert user IDS to readable names
             {id: 8, name:"Joe Willie"},
             {id: 9, name:"Zach"},
             {id: 10, name:"Riley"},
-            {id: 11, name:"Cedric"},
+            {id: 11, name:"Axel"},
             {id: 12, name:"Christian"}]
 
-request.open('GET', 'https://fantasy.espn.com/apis/v3/games/ffl/seasons/2020/segments/0/leagues/1001965?view=mBoxscore', true)
+request.open('GET', 'https://fantasy.espn.com/apis/v3/games/ffl/seasons/2020/segments/0/leagues/1001965?view=mBoxscore&view=standings', true)
 request.onload = function()
 {
     data = JSON.parse(this.response)
@@ -43,7 +43,20 @@ request.onload = function()
     }
     let table = document.getElementById('scheduleBody')
     generateRows(table, schedule)
+
+    let team = data['teams'][9]['location'] + " " + data['teams'][9]['nickname']
+    let logo = data['teams'][9]['logo']
+    
+    let pic = document.getElementById('image')
+    var img = document.createElement('img')
+    img.src = logo
+    pic.appendChild(img)
+
+    let name = document.getElementById('teamName')
+    var text = document.createTextNode(team)
+    name.appendChild(text)
 }
+request.send()
 
 function generateRows(table, data)
 {
@@ -69,31 +82,3 @@ function generateRows(table, data)
         }
     }
 }
-
-//Gets the team logo and names at the top of the page.
-var request2 = new XMLHttpRequest()
-request2.open('GET', 'https://fantasy.espn.com/apis/v3/games/ffl/seasons/2020/segments/0/leagues/1001965?view=standings', true)
-request2.onload = function()
-{
-    data = JSON.parse(this.response)
-    if (request.status >= 200 && request.status < 400)
-    {
-        let team = data['teams'][9]['location'] + " " + data['teams'][9]['nickname']
-        let logo = data['teams'][9]['logo']
-        
-        let pic = document.getElementById('image')
-        var img = document.createElement('img')
-        img.src = logo
-        pic.appendChild(img)
-
-        let name = document.getElementById('teamName')
-        var text = document.createTextNode(team)
-        name.appendChild(text)
-    }
-    else
-    {
-        console.log('Logo and team name not loaded')
-    }
-}
-request.send()
-request2.send()

@@ -61,29 +61,67 @@ h1
     text-align: center;
 }
 
+#gameNav
+{
+    width: 100%;
+    border: 2px solid black;
+    border-radius: 5px;
+    background-color: white;
+    margin-top: 10px;
+}
+
+#gameNav tr table
+{   
+    display: inline-block;
+    width: 16.65%;
+    height: 100%;
+    vertical-align: top
+}
+
+.scores
+{
+    border-left: thin solid black;
+}
+
+.current
+{
+    background-color: rgba(62, 165, 62, 0.7);
+}
+
+.scores:nth-child(1)
+{
+    border: none;
+}
+
+#scores tr:nth-child(odd)
+{
+    vertical-align: top;
+}
+
+
+#scores tr:nth-child(even)
+{
+    vertical-align: bottom;
+}
+
+#gameNav tr table tr
+{
+    font-size: .7em;
+}
+
+#gameNav tr table tr td:nth-child(3)
+{
+    width: 5%;
+}
+
 #scoreTable
 {
     margin-top: 10px;
     width: 100%;
     background-color: white;
-    border-collapse: collapse;
-}
-
-.scoreRows
-{
-    border: thick solid #333;
-}
-
-.scoreRows table
-{
-    width: 50%;
-    height: 80px;
-}
-
-.scoreRows table:nth-child(odd)
-{
-    float: left;
-    border-right: thick solid #333;
+    border: 5px solid black;
+    border-radius: 15px;
+    border-spacing: 0;
 }
 
 .logo 
@@ -93,29 +131,75 @@ h1
 
 .logo img
 {
-    width: 55px;
-    height: 55px;
+    width: 25px;
+    height: 25px;
 }
 
-.scoreRows table tr td:nth-child(3)
+#scoreTable tr th:nth-child(even)
+{
+    font-weight: bold;
+}
+
+#scoreTable tr td
+{
+    border: solid thin black;
+    text-align: center;
+}
+
+#scoreTable tr:nth-child(even)
+{
+    background-color: lightgray;
+}
+
+#scoreTable tr td:nth-child(1)
 {
     width: 5%;
-    text-align: center;
 }
 
-.scoreRows table tr td:nth-child(4)
+#scoreTable tr td:nth-child(2)
 {
-    width: 15%;
-    text-align: center;
-    border-left: thin solid #333;
+    width: 40%;
 }
 
-button
+#scoreTable tr td:nth-child(3)
 {
-    background-color: #006600;
+    width: 5%;
+    border-right: solid thick black;
+}
+
+#scoreTable tr td:nth-child(4)
+{
+    width: 5%;
+}
+
+#scoreTable tr td:nth-child(5)
+{
+    width: 40%;
+}
+
+#scoreTable tr td:nth-child(6)
+{
+    width: 5%;
+}
+
+#scoreTable tr:nth-child(11)
+{
+    background-color: #333;
+    height: 30px;
     color: white;
-    border-color: #333;
-    border-radius: 4px;
+}
+
+.bScoreImage img
+{
+    float: left;
+    width: 80px;
+    height: 80px;
+    border-radius: 15px;
+}
+
+.totalScore
+{
+    text-align: center;
 }
 
 @media only screen and (max-width: 600px) 
@@ -131,15 +215,14 @@ button
         padding-left: 40%;
     }
 
-    td
+    .scores tr td:nth-child(even)
     {
-        font-size: .6em;
+        display: none;
     }
 
-    .logo img
+    td
     {
-        width: 40px;
-        height: 40px;
+        font-size: .5em;
     }
 
     .scoreRows table tr td:nth-child(4)
@@ -147,9 +230,9 @@ button
         border: none;
     }
 
-    button
+    .bScoreImage img
     {
-        width: 95%;
-        font-size: .8em;
+        width: 40px;
+        height: 40px;
     }
 }

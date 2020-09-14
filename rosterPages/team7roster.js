@@ -35,7 +35,7 @@ var nflTeams = [{id: 0, name:"Free Agent"}, //Used to convert team ids into name
                 {id: 34, name:"Texans"}]
 
 
-request.open('GET', 'https://fantasy.espn.com/apis/v3/games/ffl/seasons/2020/segments/0/leagues/1001965?view=mRoster', true)
+request.open('GET', 'https://fantasy.espn.com/apis/v3/games/ffl/seasons/2020/segments/0/leagues/1001965?view=mRoster&view=mBoxscore&view=standings', true)
 request.onload = function()
 {
     data = JSON.parse(this.response)
@@ -89,6 +89,18 @@ request.onload = function()
 
     let table = document.getElementById('rosterBody')
     generateRows(table, roster)
+
+    let team = data['location'] + " " + data['nickname']
+    let logo = data['logo']
+    
+    let pic = document.getElementById('image')
+    var img = document.createElement('img')
+    img.src = logo
+    pic.appendChild(img)
+
+    let name = document.getElementById('teamName')
+    var text = document.createTextNode(team)
+    name.appendChild(text)
 }
 request.send()
 
@@ -117,30 +129,3 @@ function generateRows(table, data)
         }
     }
 }
-
-//Gets the team logo and names at the top of the page.
-var request2 = new XMLHttpRequest()
-request2.open('GET', 'https://fantasy.espn.com/apis/v3/games/ffl/seasons/2020/segments/0/leagues/1001965?view=standings', true)
-request2.onload = function()
-{
-    data = JSON.parse(this.response)
-    if (request.status >= 200 && request.status < 400)
-    {
-        let team = data['teams'][6]['location'] + " " + data['teams'][6]['nickname']
-        let logo = data['teams'][6]['logo']
-        
-        let pic = document.getElementById('image')
-        var img = document.createElement('img')
-        img.src = logo
-        pic.appendChild(img)
-
-        let name = document.getElementById('teamName')
-        var text = document.createTextNode(team)
-        name.appendChild(text)
-    }
-    else
-    {
-        console.log('Logo and team name not loaded')
-    }
-}
-request2.send()
