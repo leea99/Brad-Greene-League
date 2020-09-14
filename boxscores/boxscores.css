@@ -220,9 +220,20 @@ h1
         display: none;
     }
 
+    .current tr td:nth-child(2)
+    {
+        display: none;
+    }
+
     td
     {
         font-size: .5em;
+    }
+
+    .logo img
+    {
+        width: 20px;
+        height: 20px;
     }
 
     .scoreRows table tr td:nth-child(4)
