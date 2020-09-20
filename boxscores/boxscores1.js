@@ -1,4 +1,3 @@
-var request = new XMLHttpRequest()
 var load
 var week = 1
 var currentGame = 0
@@ -9,27 +8,32 @@ slotcodes = {
     20: 'Bench', 21: 'IR', 7: 'Flex'
 }
 
+getJson()
 
-request.open('GET', url, true)
-request.onload = function()
+function getJson()
 {
-    if (request.status >= 200 && request.status < 400)
-    {
-        data = JSON.parse(this.response)
-        getScores(data)
-    }
-    else
-    {
-        console.log('error')
-    }
-}
-request.send()
-
-function getWeek() 
-{
+    var request = new XMLHttpRequest()
     week = document.getElementById("week").value;
     url = "https://fantasy.espn.com/apis/v3/games/ffl/seasons/2020/segments/0/leagues/1001965?view=mMatchup&view=mMatchupScore&view=mTeam&scoringPeriodId=" + week
-    getScores(data)
+         
+    request.onreadystatechange = function()
+    {
+        if (request.status >= 200 && request.status < 400)
+        {
+            if (request.readyState === XMLHttpRequest.DONE)
+            {
+                data = JSON.parse(this.response)
+                getScores(data)
+            }
+        }
+        else
+        {
+            if (request.readyState === XMLHttpRequest.DONE)
+                console.log('error')
+        }
+    }
+request.open('GET', url, true)
+request.send()
 }
 
 function getScores(data) 
@@ -83,7 +87,6 @@ function getScores(data)
                 players.push({Name:name, Slot:slot, Points:points})
             }
             score = Math.round(score * 100) / 100
-            console.log(score)
             matchup.push({Logo:teamLogo, Team:teamName, Score:score})
         }
     }
