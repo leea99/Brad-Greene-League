@@ -40,8 +40,9 @@ function getScores(data)
 {
     var matchup = new Array()
     var players = new Array()
+    let gameId = 0
         
-    for (i in data['schedule'])
+    for (i in data['schedule']) //Gets all the players names, slots, points, team, and game for the given week.
     {
         var sched = data['schedule'][i]
         if (sched['matchupPeriodId'] == week)
@@ -62,7 +63,7 @@ function getScores(data)
                     score += points
                 //Converts numeric lineup values into real positions
                 slot = slotcodes[slot]
-                players.push({Name:name, Slot:slot, Points:points})
+                players.push({Name:name, Slot:slot, Points:points, Home:false, Game:gameId})
             }
             score = Math.round(score * 100) / 100
             matchup.push({Logo:teamLogo, Team:teamName, Score:score})
@@ -84,10 +85,11 @@ function getScores(data)
                 }
                 //Converts numeric lineup values into real positions
                 slot = slotcodes[slot]
-                players.push({Name:name, Slot:slot, Points:points})
+                players.push({Name:name, Slot:slot, Points:points, Home:true, Game:gameId})
             }
             score = Math.round(score * 100) / 100
             matchup.push({Logo:teamLogo, Team:teamName, Score:score})
+            gameId++
         }
     }
     let table = document.getElementById('gameNav')
@@ -181,10 +183,11 @@ function getPlayers(teamId)
     {
         let name = roster[i]['playerPoolEntry']['player']['fullName']
         let slot = roster[i]['lineupSlotId']
+
         //Changes flex players to slotId 7 so they can be sorted correctly
         if (slot == 23)
             slot = 7
-
+            
         let hasPlayed = false
         points = 0
         j = 0
@@ -195,9 +198,57 @@ function getPlayers(teamId)
             if ((tempYear == week) && (tempSource == 0))
                 points = roster[i]['playerPoolEntry']['player']['stats'][j]['appliedTotal']
         }
-        if (slot != 21)
+        if (slot != 21) //Prevents players on IR from being displayed
             playerEntry.push({Name:name, Slot:slot, Points:points})
     }
+    while (playerEntry.length < 15) //Fills the team with empty slots if a team has less than 15 players
+    {
+        playerEntry.push({Name:"Empty", Slot:20, Points:0})
+    }
+    
+    let correctQb = false
+    let correctRb = 0
+    let correctWr = 0
+    let correctTe = false
+    let correctFlex = 0
+    let correctD = false
+    for (p in playerEntry) //Checks if each starter slot is filled
+    {
+        if (playerEntry[p]["Slot"] == 0)
+            correctQb = true
+        else if (playerEntry[p]["Slot"] == 2)
+            correctRb++
+        else if (playerEntry[p]["Slot"] == 4)
+            correctWr++
+        else if (playerEntry[p]["Slot"] == 6)
+            correctTe = true
+        else if (playerEntry[p]["Slot"] == 7)
+            correctFlex++
+        else if (playerEntry[p]["Slot"] == 16)
+            correctD = true
+    }
+    //Adds an empty slot if a team is missing a starter
+    if (!correctQb)
+        playerEntry.push({Name:"Empty", Slot:0, Points:0})
+    while (correctRb < 2)
+    {
+        playerEntry.push({Name:"Empty", Slot:2, Points:0})
+        correctRb++
+    }
+    while (correctWr < 2)
+    {
+        playerEntry.push({Name:"Empty", Slot:4, Points:0})
+        correctWr++
+    }
+    if (!correctTe)
+        playerEntry.push({Name:"Empty", Slot:6, Points:0})
+    while (correctFlex < 2)
+    {
+        playerEntry.push({Name:"Empty", Slot:7, Points:0})
+        correctFlex++
+    }
+    if (!correctD)
+        playerEntry.push({Name:"Empty", Slot:16, Points:0})
     playerEntry.sort((a,b) => (a.Slot >= b.Slot) ? 1 : -1)
     return playerEntry
 }
@@ -238,10 +289,12 @@ function generateRows(table, data)
     }
 }
 
+//Generates the detailed boxscore
 function boxScore(game, players, id)
 {
-    let playerCount = 15
-    let gamePlayers = (playerCount * 2) * id
+    let homePlayers = new Array()
+    let roadPlayers = new Array()
+    let gameTotal = 0
 
     let table = document.getElementById("scoreTable")
     table.innerHTML = ""
@@ -262,36 +315,51 @@ function boxScore(game, players, id)
     th.innerHTML = game.getElementsByTagName("td")[4].innerHTML
     th.colSpan = 2
     row.appendChild(th)
-    for (let i = gamePlayers; i < (gamePlayers + playerCount); i++)
+
+    //Splits players into home and road rosters
+    for (i in players)
+    {
+        if (players[i]['Game'] == id)
+        {
+            if (players[i]['Home'] == true)
+                homePlayers.push(players[i])
+            else
+                roadPlayers.push(players[i])
+        }
+    }
+
+    //Ensures that home and away arrays are the same length for table row purposes
+    while(homePlayers.length > roadPlayers.length)
+        roadPlayers.push({Name:"Empty", Slot:"Bench", Points:0, Home:false, Game:id})
+    while(homePlayers.length < roadPlayers.length)
+        homePlayers.push({Name:"Empty", Slot:"Bench", Points:0, Home:false, Game:id})
+
+    gameTotal = roadPlayers.length + homePlayers.length
+        
+    //Fills a table with the selected matchup's players and scores
+    for (let i = 0; i < gameTotal / 2; i++)
     {
         row = table.insertRow()
-        for (let j = 0; j < 6; j++) 
-        {
-            let cell = row.insertCell()
-            if (j % 3 == 0)
-            {
-                let text = document.createTextNode(players[i]['Slot'])
-                cell.appendChild(text)
-            }
-            else if (j % 3 == 1)
-            {
-                let text = document.createTextNode(players[i]['Name'])
-                cell.appendChild(text)
-            }
-            else
-            {
-                let text = document.createTextNode(players[i]['Points'])
-                cell.appendChild(text)
-            }
-            if (j == 2)
-            {
-                var temp = i
-                i = i + 15
-            }
-            if (j == 5)
-                i = temp
-        }
-        if (i == gamePlayers + 8)
+        let cell = row.insertCell()
+        let text = document.createTextNode(roadPlayers[i]['Slot'])
+        cell.appendChild(text)
+        cell = row.insertCell()
+        text = document.createTextNode(roadPlayers[i]['Name'])
+        cell.appendChild(text)
+        cell = row.insertCell()
+        text = document.createTextNode(roadPlayers[i]['Points'])
+        cell.appendChild(text)
+        cell = row.insertCell()
+        text = document.createTextNode(homePlayers[i]['Slot'])
+        cell.appendChild(text)
+        cell = row.insertCell()
+        text = document.createTextNode(homePlayers[i]['Name'])
+        cell.appendChild(text)
+        cell = row.insertCell()
+        text = document.createTextNode(homePlayers[i]['Points'])
+        cell.appendChild(text)
+        
+        if (i == 8)
         {
             row = table.insertRow()
             let cell = row.insertCell()

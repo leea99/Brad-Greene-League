@@ -55,7 +55,7 @@ request.onload = function()
             pos = 'WR'
         else if (pos == 4)
             pos = 'TE'
-        else
+        else                    //Should probably future proof this 
             pos = 'D/ST'
         
         let team = data['roster']['entries'][i]['playerPoolEntry']['player']['proTeamId']
