@@ -101,7 +101,6 @@ li a
 .link a
 {
   text-decoration: none;
-  color: #333;
 }
 
 @media only screen and (max-width: 1000px) 
@@ -115,13 +114,5 @@ li a
   {
     margin-left: 0;
     width: 100%;
-  }
-}
-
-@media only screen and (max-width: 1000px)
-{
-  #brad
-  {
-    padding-left: 40%;
   }
 }

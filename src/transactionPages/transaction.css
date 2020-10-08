@@ -1,0 +1,116 @@
+html
+  {
+    font-family: Tahoma, Geneva, sans-serif;
+    background-color: #edeef0;
+  }
+
+#brad
+{
+  padding-left: 46%;
+}
+
+ul
+{
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+li
+{
+  float: left;
+  width: 25%;
+}
+
+li a
+{
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.sticky
+{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  float: left;
+}
+
+.active
+{
+  background-color: #006600;
+}
+
+h1
+{
+  text-align: center;
+}
+
+#content
+{
+    width: 90%;
+    margin-left: 5%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+#transTable
+{
+    width: 100%;
+    background-color: white;
+    border-collapse: collapse;
+    border: thick solid #333;
+}
+
+tr
+{
+    height: 30px;
+}
+
+tr:nth-child(even)
+{
+    background-color: lightgray;
+}
+
+tr td:nth-child(1)
+{
+    padding-left: 2%;
+    text-align: left;
+}
+
+tr td:nth-child(2)
+{
+    width: 75%;
+    padding-left: 2%;
+    text-align: left;
+}
+
+label
+{
+    margin-left: 5%;
+}
+
+@media only screen and (max-width: 600px) 
+{ 
+    #content
+    {
+        margin-left: 0;
+        width: 100%;
+    }
+
+    #brad
+    {
+        padding-left: 40%;
+    }
+
+    td
+    {
+        font-size: .8em;
+    }
+}

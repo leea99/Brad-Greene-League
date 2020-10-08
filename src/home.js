@@ -4,7 +4,7 @@ var div2 = new Array()
 var div3 = new Array()
 var div4 = new Array()
 
-request.open('GET', 'https://fantasy.espn.com/apis/v3/games/ffl/seasons/2020/segments/0/leagues/1001965?view=mMatchup&view=mTeam', true)
+request.open('GET', 'https://fantasy.espn.com/apis/v3/games/ffl/seasons/2020/segments/0/leagues/1001965?view=standings', true)
 request.onload = function()
 {
     var i = 0

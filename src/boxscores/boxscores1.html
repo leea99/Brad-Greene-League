@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Brad Greene League</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="boxscores.css">
+</head>
+<body>
+  <div id="brad">
+    <img src="../brad.png" height="150">
+  </div>
+  <div id="navbar">
+    <ul>
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="../teams.html">Teams</a></li>
+      <li><a class="active" href="../history.html">History</a></li>
+      <li><a href="../records.html">Records</a></li>
+    </ul>
+  </div>
+  <h1>2020 Boxscores</h1>
+  <div id="content">
+    <label for="week">Week</label>
+    <select name="week" id="week" onchange="getJson()">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+        <option value="11">11</option>
+        <option value="12">12</option>
+        <option value="13">13</option>
+        <option value="Playoff 1">Playoff 1</option>
+        <option value="Playoff 2">Playoff 2</option>
+        <option value="Playoff 3">Playoff 3</option>
+    </select>
+    <table id="gameNav">
+    </table>
+    <table id="scoreTable">
+    </table>
+  </div>
+</body>
+<script src="boxscores1.js"></script>
+</html>
