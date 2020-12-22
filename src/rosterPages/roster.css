@@ -142,4 +142,10 @@ tr td:nth-child(3)
     width: 100%;
     margin-left: 0;
   }
+
+  #teamName
+  {
+    text-align: left;
+    font-size: 1.8em;
+  }
 }

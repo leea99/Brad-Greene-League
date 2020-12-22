@@ -1,6 +1,7 @@
 var load
 var week = 1
 var currentGame = 0
+var playerAmount = 15
 var url = "https://fantasy.espn.com/apis/v3/games/ffl/seasons/2020/segments/0/leagues/1001965?view=mMatchup&view=mMatchupScore&view=mTeam&scoringPeriodId=1"
 slotcodes = {
     0 : 'QB', 2 : 'RB', 4 : 'WR',
@@ -47,26 +48,42 @@ function getScores(data)
         var sched = data['schedule'][i]
         if (sched['matchupPeriodId'] == week)
         {
-            let teamId = sched['away']['teamId']
-            let teamName = getTeamName(teamId)
-            let teamLogo = getTeamLogo(teamId)
-            let playerEntry = getPlayers(teamId)
-            let score = 0
-            for (j in playerEntry)
+            let teamId
+            let teamName
+            let teamLogo
+            let playerEntry
+            let score
+            try
             {
-                let name = playerEntry[j]['Name']
-                let slot = playerEntry[j]['Slot']
-                let points = playerEntry[j]['Points']
-                points = Math.round(points * 100) / 100
-                //Calculates current score for teams
-                if (slot < 20)
-                    score += points
-                //Converts numeric lineup values into real positions
-                slot = slotcodes[slot]
-                players.push({Name:name, Slot:slot, Points:points, Home:false, Game:gameId})
+                teamId = sched['away']['teamId']
+                teamName = getTeamName(teamId)
+                teamLogo = getTeamLogo(teamId)
+                playerEntry = getPlayers(teamId)
+                score = 0
+                for (j in playerEntry)
+                {
+                    let name = playerEntry[j]['Name']
+                    let slot = playerEntry[j]['Slot']
+                    let points = playerEntry[j]['Points']
+                    points = Math.round(points * 100) / 100
+                    //Calculates current score for teams
+                    if (slot < 20)
+                        score += points
+                    //Converts numeric lineup values into real positions
+                    slot = slotcodes[slot]
+                    players.push({Name:name, Slot:slot, Points:points, Home:false, Game:gameId})
+                }
+                score = Math.round(score * 100) / 100
+                matchup.push({Logo:teamLogo, Team:teamName, Score:score})
             }
-            score = Math.round(score * 100) / 100
-            matchup.push({Logo:teamLogo, Team:teamName, Score:score})
+            catch(err)
+            {
+                for (let j = 0; j <= playerAmount; j++ )
+                {
+                    players.push({Name:"--", Slot:"--", Points:"0", Home:false, Game:gameId})
+                }
+                matchup.push({Logo:"https://g.espncdn.com/lm-app/lm/img/shell/shield-FFL.svg", Team:"BYE", Score:0})
+            }
             teamId = sched['home']['teamId']
             teamName = getTeamName(teamId)
             teamLogo = getTeamLogo(teamId)
@@ -372,6 +389,14 @@ function boxScore(game, players, id)
             cell.appendChild(text)
             cell.className = "totalScore"
             cell.colSpan = 3
+        }
+    }
+    if (week == "14")
+    {
+        let table = document.getElementById("gameNav").getElementsByTagName("table")
+        for (let i = 0; i < table.length; i++) 
+        {
+            table[i].style.width = "14.28%"
         }
     }
 }

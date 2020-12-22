@@ -36,6 +36,10 @@ var nflTeams = [{id: 0, name:"Free Agent"}, //Used to convert team ids into name
 
 var list = new Array()
 //Manual trade transactions until I figure out how to automatically retrieve them
+list.push({Id:"0", Type:"TRADE", Name:"Ryan Tannehill", Team: "Quarry Junction Minors", proTeam:"Titans", Pos:"QB", Time:1603973700000})
+list.push({Id:"0", Type:"TRADE", Name:"Mike Gesicki", Team: "Quarry Junction Minors", proTeam:"Dolphins", Pos:"TE", Time:1603973700000})
+list.push({Id:"0", Type:"TRADE", Name:"Christian Kirk", Team: "White Asians United", proTeam:"Cardinals", Pos:"WR", Time:1603973700000})
+list.push({Id:"0", Type:"TRADE", Name:"Derek Carr", Team: "White Asians United", proTeam:"Cardinals", Pos:"QB", Time:1603973700000})
 list.push({Id:"0", Type:"TRADE", Name:"JuJu Smith-Schuster", Team: "Quarry Junction Minors", proTeam:"Steelers", Pos:"WR", Time:1602089340000})
 list.push({Id:"0", Type:"TRADE", Name:"Mike Davis", Team: "White Asians United", proTeam:"Panthers", Pos:"RB", Time:1602089340000})
 list.push({Id:"0", Type:"TRADE", Name:"Emmanuel Sanders", Team: "White Asians United", proTeam:"Saints", Pos:"WR", Time:1602089340000})
