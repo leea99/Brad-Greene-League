@@ -74,12 +74,12 @@ th
     background-color: white;
 }
 
-tr:nth-child(odd)
+.odd
 {
   background-color: lightgray;
 }
 
-tr:nth-child(2)
+.header
 {
     border-bottom: 2px solid black;
 }
