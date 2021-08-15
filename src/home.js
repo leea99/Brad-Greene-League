@@ -4,7 +4,7 @@ var div2 = new Array()
 var div3 = new Array()
 var div4 = new Array()
 
-request.open('GET', 'https://fantasy.espn.com/apis/v3/games/ffl/seasons/2020/segments/0/leagues/1001965?view=mTeam', true)
+request.open('GET', 'https://fantasy.espn.com/apis/v3/games/ffl/seasons/2021/segments/0/leagues/1001965?view=mTeam', true)
 request.onload = function()
 {
     var i = 0
@@ -64,17 +64,13 @@ request.onload = function()
   generateTableHead(table, info)
   generateTable(table, div2)
   table = document.getElementById('t2')
-  info = Object.keys(div4[0])
+  info = Object.keys(div1[0])
   generateTableHead(table, info)
-  generateTable(table, div4)
+  generateTable(table, div1)
   table = document.getElementById('t3')
   info = Object.keys(div3[0])
   generateTableHead(table, info)
   generateTable(table, div3)
-  table = document.getElementById('t4')
-  info = Object.keys(div1[0])
-  generateTableHead(table, info)
-  generateTable(table, div1)
 }
 
 request.send()

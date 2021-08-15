@@ -65,7 +65,6 @@ li a
 .standings
 {
   width: 90%;
-  height: 500px;
   margin-left: 5%;
   margin-top: 10px;
   margin-bottom: 10px;
@@ -89,13 +88,23 @@ li a
   background-color: white;
 }
 
+#t3
+{
+  width: 50%;
+  margin: 0 auto;
+  text-align: center;
+  border-collapse: collapse;
+  border: thick #333 solid;
+  background-color: white;
+}
+
 th
 {
   background-color: #333;
   color: white;
 }
 
-thead tr:nth-child(3)
+thead tr:nth-child(odd)
 {
   background-color: lightgray;
 }

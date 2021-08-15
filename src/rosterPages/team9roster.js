@@ -35,7 +35,7 @@ var nflTeams = [{id: 0, name:"Free Agent"}, //Used to convert team ids into name
                 {id: 34, name:"Texans"}]
 
 
-request.open('GET', 'https://fantasy.espn.com/apis/v3/games/ffl/seasons/2020/segments/0/leagues/1001965?view=mRoster&view=mBoxscore', true)
+request.open('GET', 'https://fantasy.espn.com/apis/v3/games/ffl/seasons/2021/segments/0/leagues/1001965?view=mRoster&view=mBoxscore', true)
 request.onload = function()
 {
     data = JSON.parse(this.response)

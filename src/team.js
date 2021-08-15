@@ -3,7 +3,7 @@ var teams = new Array()
 var teams1 = new Array()
 var teams2 = new Array()
 
-request.open('GET', 'https://fantasy.espn.com/apis/v3/games/ffl/seasons/2020/segments/0/leagues/1001965?view=mTeam', true)
+request.open('GET', 'https://fantasy.espn.com/apis/v3/games/ffl/seasons/2021/segments/0/leagues/1001965?view=mTeam', true)
 request.onload = function()
 {
     var i = 0
