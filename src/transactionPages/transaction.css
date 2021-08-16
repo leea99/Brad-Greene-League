@@ -47,34 +47,53 @@ li a
   background-color: #006600;
 }
 
+h1
+{
+  text-align: center;
+}
+
 #content
 {
     width: 90%;
     margin-left: 5%;
     margin-top: 10px;
     margin-bottom: 10px;
+}
+
+#transTable
+{
+    width: 100%;
+    background-color: white;
     border-collapse: collapse;
-    border: thick #333 solid;
+    border: thick solid #333;
 }
 
 tr
 {
-    border-bottom: thick #333 solid;
+    height: 30px;
 }
 
-td
+tr:nth-child(even)
 {
-    background-color: white;
-    width: 16%;
-    height: 50px;
-    text-align: center;
+    background-color: lightgray;
 }
 
-.title
+tr td:nth-child(1)
 {
-    background-color: #333;
-    color: white;
-    width: 20%;
+    padding-left: 2%;
+    text-align: left;
+}
+
+tr td:nth-child(2)
+{
+    width: 75%;
+    padding-left: 2%;
+    text-align: left;
+}
+
+label
+{
+    margin-left: 5%;
 }
 
 @media only screen and (max-width: 600px) 

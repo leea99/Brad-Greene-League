@@ -57,24 +57,33 @@ li a
     border: thick #333 solid;
 }
 
-tr
+h1
 {
-    border-bottom: thick #333 solid;
+    text-align: center;
+}
+
+th
+{
+    background-color: #333;
+    color: white;
+}
+
+#t1 tr
+{
+    border-bottom: 2px #333 solid;
+    background-color: white;
+}
+
+tr:nth-child(odd)
+{
+  background-color: lightgray;
 }
 
 td
 {
-    background-color: white;
     width: 16%;
-    height: 50px;
+    height: 25px;
     text-align: center;
-}
-
-.title
-{
-    background-color: #333;
-    color: white;
-    width: 20%;
 }
 
 @media only screen and (max-width: 600px) 
@@ -91,6 +100,11 @@ td
     }
 
     td
+    {
+        font-size: .8em;
+    }
+
+    th
     {
         font-size: .8em;
     }
